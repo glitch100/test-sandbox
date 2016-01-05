@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestSandbox.App\Services\VideoServiceTests\GetNextVideoNameTests.cs" />
+    <Compile Include="TestSandbox.App\Services\VideoServiceTests\GetVideosTests.cs" />
+    <Compile Include="TestSandbox.App\Services\VideoServiceTests\VideoServiceTestsBase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TestSandbox.App\TestSandbox.App.csproj">

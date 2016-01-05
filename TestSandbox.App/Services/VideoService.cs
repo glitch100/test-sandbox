@@ -1,27 +1,26 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using TestSandbox.App.Models;
 
 namespace TestSandbox.App.Services
 {
-    public class Video
+    public interface IVideoService
     {
-        public int Id { get; set; }
-        [Required]
-        [MinLength(1)]
-        public string Name { get; set; }
-        public object[] Chunks { get; set; }
+        void AddToQueue(Video v);
+        void ClearQueue();
+        string GetNextVideoName();
+        IEnumerable<Video> GetVideos(int amount = 3);
     }
 
-    public class VideoService
+    public class VideoService : IVideoService
     {
         private Queue<Video> Videos { get; set; }
-
-        public VideoService()
+        private ICloud _cloudProvider;
+        public VideoService(ICloud cloud)
         {
             Videos = new Queue<Video>();
+            _cloudProvider = cloud;
         }
 
         public void AddToQueue(Video v)
@@ -32,6 +31,16 @@ namespace TestSandbox.App.Services
         public void ClearQueue()
         {
             Videos.Clear();
+        }
+
+        public IEnumerable<Video> GetVideos(int amount = 3)
+        {
+            return Videos.Take(amount).ToArray();
+        }
+
+        public IEnumerable<CookedVideo> GrabRecentFromCloud()
+        {
+            throw new NotImplementedException();
         }
 
         public string GetNextVideoName()

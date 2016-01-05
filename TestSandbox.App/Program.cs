@@ -1,4 +1,6 @@
-﻿namespace TestSandbox.App
+﻿using TestSandbox.App.Services;
+
+namespace TestSandbox.App
 {
     class Program
     {
