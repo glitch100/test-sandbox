@@ -2,6 +2,6 @@
 {
     public class VideoData
     {
-        public object[] Marks { get; set; }
+        public float[] Marks { get; set; }
     }
 }

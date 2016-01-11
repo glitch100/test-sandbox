@@ -2,8 +2,9 @@
 {
     public class CookedVideo
     {
+        public int Id { get; set; }
         public string Name;
-        public object[] Marks { get; set; }
+        public float[] Marks { get; set; }
         public CookedVideo(string name)
         {
             Name = name;

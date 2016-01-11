@@ -1,4 +1,5 @@
 using System;
+using Moq;
 using TestSandbox.App.Models;
 using TestSandbox.App.Services;
 
@@ -7,10 +8,11 @@ namespace TestSandbox.Tests.TestSandbox.App.Services.VideoServiceTests
     public abstract class VideoServiceTestsBase :IDisposable
     {
         protected IVideoService VideoService;
-
+        protected Mock<ICloud> MockCloudService;
         protected VideoServiceTestsBase()
         {
-            VideoService = new VideoService();
+            MockCloudService = new Mock<ICloud>();
+            VideoService = new VideoService(MockCloudService.Object);
         }
 
         public void Dispose()
